@@ -1,0 +1,9 @@
+# /movies endpoints
+
+is: [ secured ]
+type:
+  collection:
+    mainItems: "movies"
+    collectionSchema: !include schemas/movies.schema
+    exampleGet: !include examples/movies/movies.get.example
+    examplePost: !include examples/movies/movies.post.example

@@ -1,0 +1,11 @@
+# /status endpoints
+
+description: This endpoint is used to determine the status of the Movies Database API.
+get:
+  description: Get the status of the Movies Database API.
+  responses:
+    200:
+      body:
+        application/json:
+          schema: !include schemas/status.schema
+          example: !include examples/status/status.ok.example

@@ -1,0 +1,12 @@
+# /movies/{movieId}/actors endpoints
+
+is: [ secured ]
+type:
+  attachedCollection:
+    mainItems: "actors"
+    secondaryItem: "movie"
+    collectionSchema: !include schemas/actors.schema
+    exampleGet: !include examples/actors/actor.get.example
+    examplePost: !include examples/actors/actors.post.example
+    idExample: !include examples/movies/movie.id.example
+    idName: movieId

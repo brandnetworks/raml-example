@@ -1,0 +1,16 @@
+{
+  "movie": {
+    "id": "b6da417c-d6fd-11e4-b9d6-1681e6b88ec1",
+    "name": "Fight Club",
+    "year": 1999,
+    "genre": "thriller",
+    "actors": [
+      {
+        "id": "111a1632-c88c-4c2d-89fb-8010db90dfc9",
+        "firstname": "Edward",
+        "lastname": "Norton",
+        "birthdate": "8/18/1969"
+      }
+    ]
+  }
+}

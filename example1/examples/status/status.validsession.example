@@ -1,0 +1,7 @@
+{
+  "status": {
+    "status": "Error",
+    "message": "There must be a valid session to access this content.",
+    "code": 1
+  }
+}

@@ -1,0 +1,75 @@
+#%RAML 0.8
+title: Movies Database
+version: v1.0
+baseUri: https://moviesdatabase.mycompany.com
+mediaType: application/json
+documentation:
+  - title: Documentation Notes
+    content: |
+      The movies database API is intended to be the main interface
+      to consumers that wish to retrive movie and actor information.
+      * **Prod Base URI:** https://moviesdatabase.mycompany.com
+      * **QA Base URI:** http://qa-moviesdatabase.mycompany.com
+
+/movies:
+  description: This endpoint is used to add and retrieve movies from the list of movies.
+  get:
+    description: Get movies from the list of movies.
+    headers:
+      auth_token:
+        description: The user's authentication token.
+        type: string
+        required: true
+        example: '0da0055c-e606-4e27-b888-bcfefce60d86'
+    queryParameters:
+      searchField:
+        description: |
+          The field to be searched on.
+        type: string
+        required: false
+        example: 'name'
+      searchValue:
+        description: |
+          The value to search the field against.
+        type: string
+        required: false
+        example: 'John Wayne'
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include schemas/movies.schema
+            example: !include examples/movies/movies.get.example 
+      401:
+        body:
+          application/json:
+            schema: !include schemas/status.schema
+            example: !include examples/status/status.validsession.example
+  post:
+    description: Add one or more new movies to the list of movies.
+    headers:
+      auth_token:
+        description: The user's authentication token.
+        type: string
+        required: true
+        example: '0da0055c-e606-4e27-b888-bcfefce60d86'
+    body:
+      application/json:
+        schema: !include schemas/movies.schema
+        example: !include examples/movies/movies.post.example
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include schemas/movies.schema
+            example: !include examples/movies/movies.post.example
+      400:
+        body:
+          application/json:
+            schema: !include schemas/status.schema
+            example: !include examples/status/status.invalidparameter.example
+      401:
+        body:
+          application/json:
+            schema: !include schemas/status.schema
+            example: !include examples/status/status.validsession.example

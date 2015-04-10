@@ -1,0 +1,13 @@
+# /movies/{movieId}/actors/{actorId} endpoints
+
+is: [ secured ]
+type:
+  attachedItem:
+    mainItem: "actor"
+    secondaryItem: "movie"    
+    itemSchema: !include schemas/actor.schema
+    exampleGet: !include examples/actors/actor.get.example
+    mainIdExample: !include examples/actors/actor.id.example
+    secondaryIdExample: !include examples/movies/movie.id.example
+    mainIdName: actorId
+    secondaryIdName: movieId

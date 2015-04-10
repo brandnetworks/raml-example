@@ -1,0 +1,12 @@
+# /actors/{actorId} endpoints
+
+is: [ secured ]
+type:
+  item:
+    item: "actor"
+    itemSchema: !include schemas/actor.schema
+    exampleGet: !include examples/actors/actor.get.example
+    examplePutBody: !include examples/actors/actor.put.example
+    examplePutResponse: !include examples/actors/actor.put.response.example
+    idExample: !include examples/actors/actor.id.example
+    idName: actorId

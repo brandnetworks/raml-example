@@ -1,0 +1,24 @@
+#%RAML 0.8
+title: Movies Database
+version: v1.0
+baseUri: https://moviesdatabase.mycompany.com
+mediaType: application/json
+traits: !include traits.raml
+resourceTypes: !include types.raml
+documentation:
+  - title: Documentation Notes
+    content: |
+      The movies database API is intended to be the main interface
+      to consumers that wish to retrive movie and actor information.
+      * **Prod Base URI:** https://moviesdatabase.mycompany.com
+      * **QA Base URI:** http://qa-moviesdatabase.mycompany.com
+
+/movies: !include moviesCollection.raml
+/movies/{movieId}: !include moviesItem.raml
+/movies/{movieId}/actors: !include movieActorsCollection.raml
+/movies/{movieId}/actors/{actorId}: !include movieActorItem.raml
+/actors: !include actorsCollection.raml
+/actors/{actorId}: !include actorsItem.raml
+/actors/{actorId}/movies: !include actorMoviesCollection.raml
+/actors/{actorId}/movies/{movieId}: !include actorMovieItem.raml
+/status: !include status.raml

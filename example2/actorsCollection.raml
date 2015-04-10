@@ -1,0 +1,9 @@
+# /actors endpoints
+
+is: [ secured ]
+type:
+  collection:
+    mainItems: "actors"
+    collectionSchema: !include schemas/actors.schema
+    exampleGet: !include examples/actors/actors.get.example
+    examplePost: !include examples/actors/actors.post.example

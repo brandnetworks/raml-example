@@ -1,0 +1,91 @@
+# Traits file
+
+# A trait is a partial method definition that, like a method, can provide method-level properties
+# such as description, headers, query string parameters, and responses. 
+# Methods that use one or more traits inherit those traits' properties.
+
+- secured:
+    usage: Apply this to any method that needs to be secured
+    description: |
+      Some requests require authentication
+    headers:
+      auth_token:
+        description: The user's authentication token.
+        type: string
+        required: true
+        example: '0da0055c-e606-4e27-b888-bcfefce60d86'
+
+- searchable:
+    usage: Apply this to any method that can be filtered by a search field and value.
+    description: |
+      Some requrest can be filtered by a search field and value.
+    queryParameters:
+      searchField:
+        description: |
+          The field to be searched on.
+        type: string
+        required: false
+        example: 'name'
+      searchValue:
+        description: |
+          The value to search the field against.
+        type: string
+        required: false
+        example: 'John Wayne'
+        
+- date_searchable:
+    usage: Apply this to any method that can be filtered by a start and end date.
+    description: |
+      Some requests can be filtered by a date range.
+    queryParameters:
+      since:
+        description: |
+          The start date used to filter the results.
+        type: string
+        required: false
+        example: '2015-01-01' 
+      until:
+        description: |
+          The end date used to filter the results.
+        type: string
+        required: false
+        example: '2015-12-31'
+
+- pageable:
+    usage: Apply this to a set of results that can be paged.
+    description: |
+      Some requests can be paged.  A limit can be set on the return along with a number of items to skip.
+    queryParameters:
+      limit:
+        description: |
+          The maximum number of results to return.
+        type: integer
+        required: false
+        example: 10
+      offset:
+        description: |
+          The number of results to skip before returning.
+        type: integer
+        required: false
+        example: 0
+
+- sortable:
+    usage: Apply this to a set of results that can be ordered.
+    description: |
+      Some requests can be sorted.  A field can be set on which the results are sorted.
+      Also a flag can be set to determine ascending or descending order.
+    queryParameters:
+      orderField:
+        description: |
+          The field to be ordered by.
+        type: string
+        required: false
+        example: 'birthdate'
+      orderAsc:
+        description: |
+          The direction of the order.  If set to true, results will be returned in ascending order.
+          If set to false, results will be returned in descending order.  If not supplied, results will be returned
+          in ascending order.
+        type: boolean
+        required: false
+        example: true 

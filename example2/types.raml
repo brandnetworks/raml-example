@@ -1,0 +1,203 @@
+# Resource Types file
+
+# A resource type is a partial resource definition that, like a resource,
+# can specify a description and methods and their properties.
+# Resources that use a resource type inherit its properties, such as its methods.
+
+- securedCollection:
+    get:
+      responses:
+        401:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.validsession.example
+    post:
+      responses:
+        401:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.validsession.example
+
+- securedItem:
+    get:
+      responses:
+        401:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.validsession.example
+    delete:
+      responses:
+        401:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.validsession.example
+
+- collection:
+    type: securedCollection
+    description: This endpoint is used to add and retrieve << mainItems >> from the list of << mainItems >>.
+    get:
+      description: Get << mainItems >> from the list of << mainItems >>.
+      is: [ searchable, date_searchable, pageable, sortable ]
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << collectionSchema >>
+              example: << exampleGet >> 
+    post:
+      description: Add one or more new << mainItems >> to the list of << mainItems >>.
+      body:
+        application/json:
+          schema: << collectionSchema >>
+          example: << examplePost >>
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << collectionSchema >>
+              example: << examplePost >>
+        400:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.invalidparameter.example
+
+- item:
+    type: securedItem
+    description: This endpoint is used to interact with an individual << item >>.
+    uriParameters:
+      << idName >>:
+        description: The << item >> ID
+        type: string
+        required: true
+        example: << idExample >>
+    get:
+      description: Get a single << item >>.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << itemSchema >>
+              example: << exampleGet >>
+        404:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.notfound.example
+    put:
+      description: Update an << item >>.
+      body:
+        application/json:
+          schema: << itemSchema >>
+          example: << examplePutBody >>
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << itemSchema >>
+              example: << examplePutResponse >>
+        # The following should be under securedItem, but I am not sure how to exclude it for the attachedItem collection
+        401:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.validsession.example
+        404:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.notfound.example
+    delete:
+      description: Remove an << item >>.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.ok.example
+        404:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.notfound.example
+
+- attachedCollection:
+    type: securedCollection
+    description: This endpoint is used to add and retrieve << mainItems >> from an individual << secondaryItem >>.
+    uriParameters:
+      << idName >>:
+        description: The << secondaryItem >> ID
+        type: string
+        required: true
+        example: << idExample >>
+    get:
+      description: Get << mainItems >> from an individual << secondaryItem >>.
+      is: [ searchable, date_searchable, pageable, sortable ]
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << collectionSchema >>
+              example: << exampleGet >> 
+    post:
+      description: Associate << mainItems >> to an individual << secondaryItem >>.
+      body:
+        application/json:
+          schema: << collectionSchema >>
+          example: << examplePost >>
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << collectionSchema >>
+              example: << examplePost >>
+        400:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.invalidparameter.example
+              
+- attachedItem:
+    type: securedItem
+    description: This endpoint is used to interact with an individual << mainItem >> associated with an individual << secondaryItem >>.
+    uriParameters:
+      << secondaryIdName >>:
+        description: The << secondaryItem >> ID
+        type: string
+        required: true
+        example: << secondaryIdExample >>
+      << mainIdName >>:
+        description: The << mainItem >> ID
+        type: string
+        required: true
+        example: << mainIdExample >>
+    get:
+      description: Get a single << mainItem >> associated with an individual << secondaryItem >>.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: << itemSchema >>
+              example: << exampleGet >>
+        404:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.notfound.example
+    delete:
+      description: Unassociate the << mainItem >> from the << secondaryItem >>.
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.ok.example
+        404:
+          body:
+            application/json:
+              schema: !include schemas/status.schema
+              example: !include examples/status/status.notfound.example

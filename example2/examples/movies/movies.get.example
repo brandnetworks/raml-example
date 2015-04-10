@@ -1,0 +1,26 @@
+{
+  "movies": [
+    {
+      "id": "76921fbe-cf99-4c46-b6b9-3681fe34ced7",
+      "name": "Gladiator",
+      "year": 2000,
+      "genre": "action",
+      "actors": [
+      ]
+    },
+    {
+      "id": "aeab4294-d6fd-11e4-b9d6-1681e6b88ec1",
+      "name": "American Beauty",
+      "year": 1999,
+      "genre": "drama",
+      "actors": [
+        {
+          "id": "c88427d8-58ae-4876-801f-908e786dfe4a",
+          "firstname": "Kevin",
+          "lastname": "Spacey",
+          "birthdate": "8/26/1959"
+        }
+      ]
+    }
+  ]
+}
