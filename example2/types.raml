@@ -10,15 +10,15 @@
         401:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.validsession.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.validsession.json
     post:
       responses:
         401:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.validsession.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.validsession.json
 
 - securedItem:
     get:
@@ -26,15 +26,15 @@
         401:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.validsession.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.validsession.json
     delete:
       responses:
         401:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.validsession.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.validsession.json
 
 - collection:
     type: securedCollection
@@ -63,8 +63,8 @@
         400:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.invalidparameter.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.invalidparameter.json
 
 - item:
     type: securedItem
@@ -86,8 +86,8 @@
         404:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.notfound.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.notfound.json
     put:
       description: Update an << item >>.
       body:
@@ -104,26 +104,26 @@
         401:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.validsession.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.validsession.json
         404:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.notfound.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.notfound.json
     delete:
       description: Remove an << item >>.
       responses:
         200:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.ok.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.ok.json
         404:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.notfound.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.notfound.json
 
 - attachedCollection:
     type: securedCollection
@@ -158,8 +158,8 @@
         400:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.invalidparameter.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.invalidparameter.json
               
 - attachedItem:
     type: securedItem
@@ -186,18 +186,18 @@
         404:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.notfound.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.notfound.json
     delete:
       description: Unassociate the << mainItem >> from the << secondaryItem >>.
       responses:
         200:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.ok.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.ok.json
         404:
           body:
             application/json:
-              schema: !include schemas/status.schema
-              example: !include examples/status/status.notfound.example
+              schema: !include schemas/status.json
+              example: !include examples/status/status.notfound.json

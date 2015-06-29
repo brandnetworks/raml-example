@@ -38,13 +38,13 @@ documentation:
       200:
         body:
           application/json:
-            schema: !include schemas/movies.schema
-            example: !include examples/movies/movies.get.example 
+            schema: !include schemas/movies.json
+            example: !include examples/movies/movie.get.json 
       401:
         body:
           application/json:
-            schema: !include schemas/status.schema
-            example: !include examples/status/status.validsession.example
+            schema: !include schemas/status.json
+            example: !include examples/status/status.validsession.json
   post:
     description: Add one or more new movies to the list of movies.
     headers:
@@ -55,21 +55,21 @@ documentation:
         example: '0da0055c-e606-4e27-b888-bcfefce60d86'
     body:
       application/json:
-        schema: !include schemas/movies.schema
-        example: !include examples/movies/movies.post.example
+        schema: !include schemas/movies.json
+        example: !include examples/movies/movies.post.json
     responses:
       200:
         body:
           application/json:
-            schema: !include schemas/movies.schema
-            example: !include examples/movies/movies.post.example
+            schema: !include schemas/movies.json
+            example: !include examples/movies/movies.post.json
       400:
         body:
           application/json:
-            schema: !include schemas/status.schema
-            example: !include examples/status/status.invalidparameter.example
+            schema: !include schemas/status.json
+            example: !include examples/status/status.invalidparameter.json
       401:
         body:
           application/json:
-            schema: !include schemas/status.schema
-            example: !include examples/status/status.validsession.example
+            schema: !include schemas/status.json
+            example: !include examples/status/status.validsession.json
